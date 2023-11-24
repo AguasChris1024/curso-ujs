@@ -1,6 +1,22 @@
 //Hoisting
 //miFuncion(4, 2);
+/* function <nombre_funcion>(<parametros>){
+    Cuerpo de la función
+    return <valor_retorno>; (opcional)
+} Fin de la función
+nombre_funcion --> verbo o acción a realizar
+parametros --> (opcional) variavles locales a la función
 
+Declaración
+function imprimir(parametro){
+    console.log(parametro);
+}
+
+Llamada
+imprimir(5);
+imprimir(200);
+
+*/
 //Declaración de la función
 function miFuncion(a, b){
     console.log(arguments.length);

@@ -7,7 +7,7 @@
 nombre_funcion --> verbo o acción a realizar
 parametros --> (opcional) variavles locales a la función
 
-Declaración
+1. Declaración
 function imprimir(parametro){
     console.log(parametro);
 }
@@ -17,26 +17,27 @@ imprimir(5);
 imprimir(200);
 
 */
-//Declaración de la función
-function miFuncion(a, b){
-    console.log(arguments.length);
-    return a + b;
+//1. Declaración de la función
+function sumar(a, b){
+    let resultadoSuma = a + b;
+    return resultadoSuma;
 }
 
-//Llamado a la función
-let resultado = miFuncion(7, 14);
+//2. Llamado a la función
+let argA = 5, argB = 7;
+let resultado = sumar(argA, argB);
 console.log(resultado);
 
 //Funciones tipo expresión
 //Declaración de la función
-let sumar = function(a = 4, b = 5){
+let sumarX = function(a = 4, b = 5){
     console.log(arguments[0]);
     console.log(arguments[1]);
     console.log(arguments[2]);
     return a + b + arguments[2];
 };
 
-resultado = sumar(3, 6, 7);
+resultado = sumarX(3, 6, 7);
 console.log(resultado);
 
 //Funciones Self-Invoking
@@ -47,9 +48,9 @@ console.log(resultado);
 })(3,4);
 
 //Funciones como objetos
-console.log(typeof(miFuncion));
+console.log(typeof(sumar));
 
-var miFuncionTexto = miFuncion.toString();
+var miFuncionTexto = sumar.toString();
 console.log(miFuncionTexto);
 
 

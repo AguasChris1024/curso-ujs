@@ -1,0 +1,11 @@
+//Paso por valor en JS
+//Aplica cuando estamos pasando información de tipo primitivo (number, bool, string)
+//Pasar una copia del valor del argumento
+
+function cambiarValor(parametro){
+    parametro = 20;
+}
+
+let argumento = 10;
+cambiarValor(argumento);
+console.log(argumento);

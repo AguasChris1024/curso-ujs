@@ -1,6 +1,6 @@
 //Tipo de dato primitivo
 /*let x = 10;
-console.log(x.length);*/
+console.log(x.length);  -> lanza valor undefinied*/
 
 let persona = {
     nombre: 'Christian',
@@ -15,6 +15,11 @@ let persona = {
         this.idioma = lang.toUpperCase();
     },
     //Método dentro de un objeto
+    /*
+    nombreCompleto: function(){
+        return this.nombre + ' ' + this.apellido;
+    }
+    */
     get nombreCompleto(){
         return this.nombre + ' ' + this.apellido;
     }
@@ -44,12 +49,24 @@ console.log(persona2.telefono);
 console.log(persona.nombre);
 console.log(persona['apellido']);
 
+
+//Formas de imprimir un Object
+//Concatenar cada valor de cada propiedad
+console.log(persona.nombre + ' ' + persona.apellido);
+
 //for in
-for(nombrePropiedad in persona){
+for (nombrePropiedad in persona){
     console.log(nombrePropiedad);
     console.log(persona[nombrePropiedad]);
 }
 
+//Devuelve nuestro objeto como un array
+let personaArray = Object.values(persona);
+console.log(personaArray);
+
+//Mostrar objeto en formato JSON
+let personaString = JSON.stringify(persona);
+console.log(personaString);
 
 //Agregar y eliminar propiedades de un objeto
 
@@ -61,21 +78,6 @@ console.log(persona);
 delete persona.telefono;
 
 console.log(persona);
-
-//Formas de imprimir un Object
-//Concatenar cada valor de cada propiedad
-console.log(persona.nombre + ' ' + persona.apellido);
-
-//for in
-for (nombrePropiedad in persona){
-    console.log(persona[nombrePropiedad]);
-}
-
-let personaArray = Object.values(persona);
-console.log(personaArray);
-
-let personaString = JSON.stringify(persona);
-console.log(personaString);
 
 /**Métodos GET y SET en Objects
  * get nombreCompleto(){
@@ -98,6 +100,7 @@ console.log(persona.idioma);
 
 //Método constructor Objetos
 //Función constructor de objetos de tipo Persona
+//Permiten crear más objetos del mismo tipo y reutilizar el código.
 function Persona(nombre, apellido, email){
     this.nombre = nombre;
     this.apellido =  apellido;
@@ -109,16 +112,22 @@ function Persona(nombre, apellido, email){
 }
 
 //Uso de Prototype
-Persona.prototype.telefono = '0991534530'
+//Permite agregar nuevos atributos a los objetos que usen esta propiedad de prototype
+Persona.prototype.telefono = '0963034181'
 
 let padre =  new Persona('Pablo', 'Aguas', 'pabloaguas8@gmail.com');
 console.log(padre.nombreCompleto());
+padre.telefono = '0991534530'
 console.log(padre.telefono);
+console.log(padre);
 
 let madre = new Persona('Cecilia', 'Núñez', 'ceci_nuez@gmail.com');
+console.log(madre);
 console.log(madre.nombreCompleto());
 madre.telefono = '0993552048';
 console.log(madre.telefono);
+console.log(madre);
+
 
 padre.nombre = 'Pedro';
 console.log(padre);
@@ -130,6 +139,8 @@ let miObjeto2 = {};
 
 let miCadena1 = new String('Hola');
 let miCadena2 = 'Hola';
+//quiero ver 
+console.log(typeof miCadena2);
 
 let miNumero = new Number(1);
 let miNumero2 = 1;
@@ -145,11 +156,12 @@ let miFuncion2 =  function(){};
 
 
 //Uso de Call
+//Permite llamar un método de un objeto a otro objeto
 let persona1 = {
     nombre: 'Christian',
     apellido: 'Aguas',
     nombreCompleto: function(titulo, telefono){
-        return titulo + ' ' + this.nombre + ' ' + this.apellido + ', ' + telefono;
+        return titulo + ': ' + this.nombre + ' ' + this.apellido + ', ' + telefono;
     }
 }
 
@@ -160,8 +172,11 @@ let persona3 = {
 //El método persona1.nombreCompleto con los datos de persona2
 console.log(persona1.nombreCompleto('Ingeniero', '0963034181'));
 
+//Paso de argumentos con la Función CALL
+//Uso de call para usar el método persona1.nombreCompleto con los datos de persona3
 console.log(persona1.nombreCompleto.call(persona3, 'Contadora', '0965864214'));
 
 //Método Apply
+//Permite llamar un método en un objeto que no posee dicho método
 let arreglo = ['Contadora', '0965864214']
 console.log(persona1.nombreCompleto.apply(persona3, arreglo));

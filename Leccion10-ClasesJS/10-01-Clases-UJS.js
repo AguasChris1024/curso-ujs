@@ -7,26 +7,29 @@
 
 
 class Persona{
-    
+    //Atributos estáticos de nuestra clase
     static contadorPersonas = 0; //atributo de nuestra clase
 
+    //Variable estática de solo lectura. Método que simula una constante
     static get MAX_OBJ(){
         return 5;
     }
 
-    //email = 'Valor default del email'; //atributo de nuestros objetos.
+    email = 'Valor default del email'; //atributo de nuestros objetos. No necesariamente va en el constructor
     
     constructor(nombre, apellido){
+        //Declaración e inicialización de los argumentos (propiedades)
         this._nombre =  nombre;
         this._apellido = apellido;
         if(Persona.contadorPersonas < Persona.MAX_OBJ){
-            this.idPersona = ++Persona.contadorPersonas;
+            this.idPersona = ++Persona.contadorPersonas; //Pre incremento ++Persona.contadorPersonas
         } 
-        
         else{
-            console.log('Se han superado el máximo de objetos permitidos.')
+            console.log('Se han superado el máximo de objetos permitidos.');
         }
     }
+
+    //Métodos GET(obtener)  y SET(modificar) para trabajar con los atributos
 
     get nombre(){
         return this._nombre;
@@ -45,9 +48,10 @@ class Persona{
     }
 
     nombreCompleto(){
-        return this.idPersona + ' ' + this._nombre + ' ' + this._apellido;
+        return this.idPersona + ') ' + this._nombre + ' ' + this._apellido;
     }
 
+    //Métodos static: Se va a asociar con la clase y no con los objetos que se creen de esta clase.
     static saludar(){
         console.log('Saludos desde método static.');
     }
@@ -64,9 +68,10 @@ class Persona{
     }
 }
 
+//Herencia -> para reutilizar código y heredar características a partir de una clase padre
 //Clase hija
 class Empleado extends Persona{
-    constructor(nombre, apellido,departamento){
+    constructor(nombre, apellido, departamento){
         super(nombre, apellido);    //Llamar al constructor de la clase padre
         this._departamento = departamento;
     }
@@ -83,14 +88,15 @@ class Empleado extends Persona{
     //Cambiar el comportamiento de un método de la clase padre
 
     nombreCompleto(){
-        return super.nombreCompleto() + ', ' + this._departamento;
+        return super.nombreCompleto() + ', ' + this._departamento; //Uso de super para reutilizar lo de la clase padre.
     }
 }
 
-let persona1 =  new Persona('Christian', 'Aguas'); //Instancia de clase u objeto
+let persona1 = new Persona('Christian', 'Aguas'); //Instancia de clase u objeto
 console.log(persona1.toString());
-/*persona1.nombre = 'Xavier'; 
-console.log(persona1.nombre);
+persona1.nombre = 'Xavier'; //Manda a llamar de forma indirecta get nombre('Xavier')
+console.log(persona1.nombre); //get nombre
+/*console.log(persona1.nombre);
 console.log(persona1);*/
 
 let persona2 = new Persona('Isabella', 'Sevilla');
@@ -102,6 +108,7 @@ let empleado1 = new Empleado('Camila', 'Aguas', 'Contaduría General');
 console.log(empleado1.nombre);
 console.log(empleado1.nombreCompleto());
 console.log(persona1.toString());*/
+
 
 console.log(empleado1.toString());
 
@@ -115,12 +122,12 @@ Empleado.saludar2(empleado1);
 console.log(persona1.contadorPersonas);
 console.log(Persona.contadorPersonas);
 
-console.log(Empleado.contadorPersonas);
+console.log(Empleado.contadorPersonas); //Las clases hijas también heredan atributos estáticos
 
-/*console.log(persona1.email);
+console.log(persona1.email);
 console.log(empleado1.email);
 console.log(Persona.email);
-console.log(Empleado.email);*/
+console.log(Empleado.email);
 
 console.log(Persona.contadorPersonas);
 
@@ -136,4 +143,5 @@ console.log(Persona.MAX_OBJ);
 let persona4 = new Persona('Pablo', 'Aguas');
 let persona5 = new Persona('Katy', 'Changa');
 
+console.log(persona4.toString());
 console.log(persona5.toString());

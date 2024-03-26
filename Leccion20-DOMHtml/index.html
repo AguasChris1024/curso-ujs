@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Manejo DOM con JS</title>
+    <!-- <style>
+        .azul{
+            color: blue;
+        }
+    </style> -->
+</head>
+<body>
+    <!-- Manejo de formularios 
+    <form id="formulario">
+        Nombre: <input type="text" name="nombre" value="Juan"/>
+        <br/>
+        Apellido:  <input type="text" name="apellido" value="Sosa"/>
+        <br/>
+    </form>
+    <button onclick="mostrarValores()">Mostrar</button>
+    
+    <div id="valores"></div>
+    <script>
+        function mostrarValores(){
+            let formulario = document.forms['formulario'];
+            let texto = '';
+            //Recorremos cada elemento del formulario para obtener su valor     
+            // for(let elemento of formulario){ //Al ser un arreglo, se puede iterar por elementos
+            //     texto += elemento.value + '<br/>';
+            // } 
+
+            //Acceder a cada uno de los elementos uno por uno
+            let nombre = formulario['nombre'];
+            let apellido = formulario['apellido'];
+            texto = nombre.value + '<br/>' + apellido.value;
+            
+            document.getElementById('valores').innerHTML = texto         
+        } 
+    </script> -->
+    <!-- <h1 id="cabecero" class="azul">Ejemplo DOM con JS</h1>
+    <p id="parrafo1" class="azul">Saludos!</p>
+    <p id="parrafo2" class="azul">Otro párrafo</p>
+
+
+    let cabecero = document.getElementById("cabecero"); 
+    let parrafo = document.getElementById("parrafo1");
+    let parrafos = document.getElementsByTagName('p');
+    let elementos = document.getElementsByClassName('azul');
+    let elementos = document.querySelectorAll('p.azul');
+    console.log(`N° elementos: ${elementos.length}`);
+    for(let i = 0; i < elementos.length; i++){
+        console.log(`${i}) ${elementos[i].innerHTML}`);
+    }
+
+    for(let elemento of elementos){
+        console.log(`${elemento.innerHTML}`);
+    }
+    console.log(`Valor cabecero: ${cabecero.innerHTML}`); // .innerHTML para acceder al texto/contenido del objeto
+    console.log(`Valor del párrafo:  ${parrafo.innerHTML}`);
+    cabecero.innerHTML = 'Nuevo valor de cabecero.'
+    parrafo.innerHTML = 'Nuevo valor del párrafo.';
+    console.log('Saludos desde JS.'); 
+
+    document.write('Saludos desde JS.');
+</script> -->
+<h1 id="titulo">Manejo DOM con JS</h1>
+<button onclick="mostrar()">Mostrar</button>
+<br/>
+<!-- <img id="imagen" src="http://globalmentoring.com.mx/imagenes/javascript.png"/> -->
+
+<script>
+    // document.write('Saludos desde JS.');
+    
+    // function mostrar(){
+    //     document.write('Adiós.'); //Sobreescribe a toda la información y contenido una vez que se ha cargado nuestro doc HTML.
+    // }
+
+    function mostrar(){
+        //document.getElementById('titulo').innerHTML += '<br/> Nuevo título.';
+        //document.getElementById('imagen').src = 'http://globalmentoring.com.mx/imagenes/html5.png'
+        document.getElementById('titulo').style.color = 'red';
+    }
+</script>
+
+<!-- El script siempre debe estar luego de los elementos a los que quiere acceder. -->
+
+</body>
+</html>

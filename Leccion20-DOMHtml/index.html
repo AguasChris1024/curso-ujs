@@ -10,7 +10,72 @@
     </style> -->
 </head>
 <body>
-    <!-- Manejo de formularios 
+    <h1 id="titulo">Manejo de DOM con JS</h1>
+    <br/>
+    <form id="form">
+        Nombre: <input type="text" id="nombre"/>
+        <br/><br/>
+        Apellido: <input type="text" id="apellido"/>
+    </form>
+
+    <script>
+        // function convertir(nombreInput){
+        //     nombreInput.value = nombreInput.value.toUpperCase();
+        // }
+        // function rojo(titulo){
+        //     console.log("Evento onmouse down, rojo");
+        //     titulo.style.color = 'red';
+        // }
+
+        // function azul(titulo){
+        //     console.log("Evento onmouse up, rojo");
+        //     titulo.style.color = 'blue';
+        // }
+        // function verde(titulo){
+        //     console.log("Evento onclick, verde");
+        //     titulo.style.color= 'green';
+        // }
+
+        // function cambiar(elementoInput){
+        //     elementoInput.style.background = 'yellow';
+        // }
+
+        // function regresar(elementoInput){
+        //     elementoInput.style.background = 'white';
+        // }
+
+        const formulario = document.getElementById('form'); 
+
+        formulario.addEventListener('focus', (evento) => {
+            evento.target.style.background = 'yellow'; // La función flecha no se puede reutilizar porque son funciones anónimas en este caso.
+        }, true); //Delegación de evento o useCapture
+        formulario.addEventListener('blur', (evento) => {
+            evento.target.style.background = '';
+        }, true);
+        // document.getElementById('apellido').addEventListener('focus', cambiar); // Función cambiar con callback
+        // document.getElementById('apellido').addEventListener('blur', regresar); // Función cambiar con callback
+
+        // function cambiar(evento){
+        //     let componente = evento.target;
+        //     componente.style.background = 'yellow'      // con evento.target, recupero el componente, como si lo hubiera hecho en HTML con this.
+        // }
+
+        // function regresar(evento){
+        //     let componente = evento.target;
+        //     componente.style.background = 'white'      // con evento.target, recupero el componente, como si lo hubiera hecho en HTML con this.
+        // }
+    </script>
+
+
+<!-- <h1 id="titulo" onmouseover="rojo(this)" onmouseout="azul(this)" onmousedown="azul(this)" onmouseup="rojo(this)" onclick="verde(this)">
+    Manejo de DOM con JS
+</h1> -->
+<!-- Nombre: <input type="text" onchange="convertir(this)" onfocus="cambiar(this)"/> -->
+<!-- Nombre: <input type="text" onfocus="cambiar(this)" onblur="regresar(this)"/> -->
+
+    
+<!-- <body onload="entrar()">
+    Manejo de formularios
     <form id="formulario">
         Nombre: <input type="text" name="nombre" value="Juan"/>
         <br/>
@@ -18,31 +83,31 @@
         <br/>
     </form>
     <button onclick="mostrarValores()">Mostrar</button>
-    
+
     <div id="valores"></div>
     <script>
         function mostrarValores(){
             let formulario = document.forms['formulario'];
             let texto = '';
-            //Recorremos cada elemento del formulario para obtener su valor     
+            //Recorremos cada elemento del formulario para obtener su valor
             // for(let elemento of formulario){ //Al ser un arreglo, se puede iterar por elementos
             //     texto += elemento.value + '<br/>';
-            // } 
+            // }
 
             //Acceder a cada uno de los elementos uno por uno
             let nombre = formulario['nombre'];
             let apellido = formulario['apellido'];
             texto = nombre.value + '<br/>' + apellido.value;
-            
-            document.getElementById('valores').innerHTML = texto         
-        } 
+
+            document.getElementById('valores').innerHTML = texto
+        }
     </script> -->
     <!-- <h1 id="cabecero" class="azul">Ejemplo DOM con JS</h1>
     <p id="parrafo1" class="azul">Saludos!</p>
     <p id="parrafo2" class="azul">Otro párrafo</p>
 
 
-    let cabecero = document.getElementById("cabecero"); 
+    let cabecero = document.getElementById("cabecero");
     let parrafo = document.getElementById("parrafo1");
     let parrafos = document.getElementsByTagName('p');
     let elementos = document.getElementsByClassName('azul');
@@ -59,28 +124,52 @@
     console.log(`Valor del párrafo:  ${parrafo.innerHTML}`);
     cabecero.innerHTML = 'Nuevo valor de cabecero.'
     parrafo.innerHTML = 'Nuevo valor del párrafo.';
-    console.log('Saludos desde JS.'); 
+    console.log('Saludos desde JS.');
 
     document.write('Saludos desde JS.');
-</script> -->
+</script>
 <h1 id="titulo">Manejo DOM con JS</h1>
 <button onclick="mostrar()">Mostrar</button>
 <br/>
-<!-- <img id="imagen" src="http://globalmentoring.com.mx/imagenes/javascript.png"/> -->
+<img id="imagen" src="http://globalmentoring.com.mx/imagenes/javascript.png"/>
+
+<div id="mostrar"></div>
 
 <script>
     // document.write('Saludos desde JS.');
-    
+
     // function mostrar(){
     //     document.write('Adiós.'); //Sobreescribe a toda la información y contenido una vez que se ha cargado nuestro doc HTML.
+    //     //document.getElementById('titulo').innerHTML += '<br/> Nuevo título.';
+    //     //document.getElementById('imagen').src = 'http://globalmentoring.com.mx/imagenes/html5.png'
+    //     document.getElementById('titulo').style.color = 'red';
     // }
 
-    function mostrar(){
-        //document.getElementById('titulo').innerHTML += '<br/> Nuevo título.';
-        //document.getElementById('imagen').src = 'http://globalmentoring.com.mx/imagenes/html5.png'
-        document.getElementById('titulo').style.color = 'red';
+    // function cambiarTexto(titulo){
+    //     console.log(titulo);
+    //     console.log(titulo.innerHTML);
+    //     titulo.innerHTML = 'Cambiamos el título';
+    //     console.log(titulo.innerHTML);
+    // }
+
+    // document.getElementById('titulo').onclick = cambiarTexto; //Esta es una función de tipo callback
+
+    // function cambiarTexto(){
+    //     document.getElementById('mostrar').innerHTML = 'Nuevo contenido.'
+    // }
+
+    function entrar(){
+        alert('Entrando a la página web.');
+        let texto = '';
+        if(navigator.cookieEnabled){
+            texto = 'Cookies están habilitadas.';
+        }
+        else{
+            texto = 'Cookies están deshabilitadas.'
+        }
+        document.getElementById('mostrar').innerHTML = texto;
     }
-</script>
+</script> -->
 
 <!-- El script siempre debe estar luego de los elementos a los que quiere acceder. -->
 
